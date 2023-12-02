@@ -1,5 +1,5 @@
 
-<img src="https://media.giphy.com/media/mvyByQFywcRaw/giphy.gif" alt="Funny GIF" width="1050" height="550">
+<img src="https://media.giphy.com/media/6pjnF8qE6sqU8/giphy.gif" alt="Funny GIF" width="1000" height="570">
 
 <div align="center">
 
@@ -52,6 +52,8 @@ python jok3r.py -h
 ```
 
 ## Usage
+![Usage](https://media.giphy.com/media/20KNpHp9lsi15i9uga/giphy.gif)
+
 ### Host Discovery:
 ```bash
 python3 jok3r.py -s 192.168.1.0 -m 24
@@ -80,6 +82,8 @@ python3 jok3r.py -s 192.168.1.0 -m 24 -i 192.168.1.2 -Ps
 ```
 
 ## Contributing
+![Joker](https://media.giphy.com/media/2ij0s9Q5folTsJiZib/giphy.gif)
+
 Contributions are welcome! If you have suggestions, bug reports, or want to contribute code, feel free to open an issue or submit a pull request.
 
 Please make sure to update tests as appropriate.
