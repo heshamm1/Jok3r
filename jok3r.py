@@ -54,7 +54,7 @@ def discover_hosts(subnet, subnet_mask):
 def nmap_scan(target_host, all_ports=False):
     try:
         # Modified Nmap Command
-        temp_file_name = "nmap_output.txt
+        temp_file_name = "nmap_output.txt"
         # Modified Nmap Command to redirect output to a temporary file
         command = f"nmap -O -sS -T4 -V -sV {'-p1-65535' if all_ports else '-p1-1024'} {target_host} > {temp_file_name}"
         subprocess.run(command, shell=True)
