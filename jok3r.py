@@ -62,7 +62,9 @@ def nmap_scan(target_host, all_ports=False):
             print_colored(f"[-] Nmap scan failed: {error.decode('utf-8')}", "\033[91m")  # Red
             return [], {}
 
-        open_ports, port_services = parse_nmap_output(output)
+        output_bytes = output if isinstance(output, bytes) else output.encode('utf-8')
+        
+        open_ports, port_services = parse_nmap_output(output_bytes)
         return open_ports, port_services
     except Exception as e:
         print_colored(f"[-] An error occurred during nmap scan: {e}", "\033[91m")  # Red
