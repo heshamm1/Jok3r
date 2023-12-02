@@ -8,7 +8,7 @@ import re
 import threading
 import subprocess
 import os
-
+import time
 
 def generate_banner():
     colors = [
@@ -56,6 +56,11 @@ def nmap_scan(target_host, all_ports=False):
     try:
         # Modified Nmap Command
         temp_file_name = "nmap_output.txt"
+        print_colored("[+] Scanning in progress. Please wait...", "\033[94m")
+        time.sleep(2)
+        print_colored("[+] This may take a while depending on the target and selected options.", "\033[94m")
+        time.sleep(2)
+        print_colored("[+] Scanning in progress. Please wait...", "\033[94m")
         # Modified Nmap Command to redirect output to a temporary file
         command = f"nmap -A {'-p1-65535' if all_ports else '-p1-1024'} {target_host} > {temp_file_name}"
         subprocess.run(command, shell=True)
