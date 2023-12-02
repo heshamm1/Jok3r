@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import ipaddress
 import socket
 import random
@@ -162,18 +164,13 @@ def main():
                 print_colored(output, "\033[92m")  # Green
 
                 for port in open_ports:
-                    service = port_services.get(port, {"service": "Unknown Service", "version": "Unknown Version"})
+                    service_info = port_services.get(port, {"service": "Unknown Service", "version": "Unknown Version"})
                     service = service_info["service"]
                     version = service_info["version"]
                     print_colored(f"[+] Port {port} service: {service}, version: {version}", "\033[94m")  # Blue
 
                 if save_output_file:
                     save_to_file(output, save_output_file)
-                    for port in open_ports:
-                        service_info = port_services.get(port, {"service": "Unknown Service", "version": "Unknown Version"})
-                        service = service_info["service"]
-                        version = service_info["version"]
-                        print_colored(f"[+] Port {port} service: {service}, version: {version}", "\033[94m")  # Blue
             else:
                 output = f"[-] No open ports found on {target_host}."
                 print_colored(output, "\033[91m")  # Red
