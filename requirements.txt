@@ -1,0 +1,8 @@
+ipaddress==1.0.23
+requests==2.26.0
+scapy==2.4.5
+nmap
+re
+subprocess
+threading
+random
