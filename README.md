@@ -30,7 +30,7 @@ git clone https://github.com/heshamm1/Jok3r && cd Jok3r
 ```bash
 pip install -r requirements.txt
 ```
-or 
+> or 
 ```bash
 chmod +x setup.sh && ./setup.sh
 ```
