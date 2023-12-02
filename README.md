@@ -1,16 +1,11 @@
-
-<img src="https://media.giphy.com/media/6pjnF8qE6sqU8/giphy.gif" alt="Funny GIF" width="1000" height="570">
-
 <div align="center">
+  
+<img src="https://media.giphy.com/media/6pjnF8qE6sqU8/giphy.gif" alt="Joker's Slap" width="900" height="540">
 
 [![ProtonMail](https://img.shields.io/badge/ProtonMail-Email%20Me-red)](mailto:0xsh1vv@proton.me)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue)](https://www.linkedin.com/in/heshamm1/)
 [![Telegram](https://img.shields.io/badge/Telegram-Chat-blue)](https://t.me/sh1vv1)
 [![Discord](https://img.shields.io/badge/Discord-Chat-green)](https://discord.gg/SxHbbCBP)
-
-</div>
-
-<div align="center">
   
 # **Welcome to The Joker's World!!**
 ### Your favorite host discovery/scanner tool.
