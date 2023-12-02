@@ -7,6 +7,7 @@ import sys
 import re
 import threading
 import subprocess
+import os
 
 
 def generate_banner():
