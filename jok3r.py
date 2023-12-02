@@ -6,7 +6,7 @@ import re
 import threading
 import subprocess
 
-# Function to generate a colored banner
+
 def generate_banner():
     colors = [
         "\033[91m", "\033[92m", "\033[94m",
@@ -23,7 +23,6 @@ def generate_banner():
 """
     return random.choice(colors) + banner + "\033[0m"
 
-# Function to perform host discovery with threading
 def discover_hosts(subnet, subnet_mask):
     network = ipaddress.IPv4Network(f"{subnet}/{subnet_mask}", strict=False)
     discovered_hosts = []
@@ -38,7 +37,7 @@ def discover_hosts(subnet, subnet_mask):
         except Exception as e:
             print_colored(f"[-] An error occurred for {ip_str}: {e}", "\033[91m")  # Red
 
-    # Use threading to parallelize connection attempts
+    
     threads = []
     for ip in network.hosts():
         thread = threading.Thread(target=worker, args=(ip,))
@@ -49,11 +48,11 @@ def discover_hosts(subnet, subnet_mask):
         thread.join()
 
     return discovered_hosts
-
-# Function to perform port scanning using nmap
+    
 def nmap_scan(target_host, all_ports=False):
     try:
-        command = f"nmap -p{'0-65535' if all_ports else '1-1024'} {target_host}"
+        # Modified Nmap Command
+        command = f"nmap -O -sS -T4 -V -sV {'-p1-65535' if all_ports else '-p1-1024'} {target_host}"
         process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
         output, error = process.communicate()
 
@@ -67,7 +66,9 @@ def nmap_scan(target_host, all_ports=False):
         print_colored(f"[-] An error occurred during nmap scan: {e}", "\033[91m")  # Red
         return [], {}
 
-# Function to parse nmap output and extract open ports and services
+
+
+# Modified Parsing
 def parse_nmap_output(nmap_output):
     open_ports = []
     port_services = {}
@@ -76,20 +77,20 @@ def parse_nmap_output(nmap_output):
     for line in lines:
         if "open" in line.lower() and "tcp" in line.lower():
             # Example line: 22/tcp  open  ssh
-            match = re.match(r"(\d+)/tcp\s+open\s+(\w+)", line)
+            match = re.match(r"(\d+)/tcp\s+open\s+(\w+)(?:\s+(\w+))?", line)
             if match:
                 port = match.group(1)
                 service = match.group(2)
+                version = match.group(3) if match.group(3) else "Unknown Version"
                 open_ports.append(port)
-                port_services[port] = service
+                port_services[port] = {"service": service, "version": version}
 
     return open_ports, port_services
 
-# Function to print colored output
 def print_colored(message, color):
     print(f"{color}{message}\033[0m")
 
-# Function to display help message
+
 def display_help():
     print(generate_banner())
     print_colored("Welcome to The Jok3r World!", "\033[94m")
@@ -107,7 +108,7 @@ def display_help():
     print("")
     sys.exit()
 
-# Function for input validation
+
 def validate_input(subnet, subnet_mask):
     try:
         ipaddress.IPv4Network(f"{subnet}/{subnet_mask}", strict=False)
@@ -115,12 +116,12 @@ def validate_input(subnet, subnet_mask):
     except ValueError:
         return False
 
-# Function to save output to a text file
+
 def save_to_file(output, file_name):
     with open(file_name, "w") as file:
         file.write(output)
 
-# Main function
+
 def main():
     try:
         if len(sys.argv) < 2:
@@ -161,14 +162,18 @@ def main():
                 print_colored(output, "\033[92m")  # Green
 
                 for port in open_ports:
-                    service = port_services.get(port, "Unknown Service")
-                    print_colored(f"[+] Port {port} service: {service}", "\033[94m")  # Blue
+                    service = port_services.get(port, {"service": "Unknown Service", "version": "Unknown Version"})
+                    service = service_info["service"]
+                    version = service_info["version"]
+                    print_colored(f"[+] Port {port} service: {service}, version: {version}", "\033[94m")  # Blue
 
                 if save_output_file:
                     save_to_file(output, save_output_file)
                     for port in open_ports:
-                        service = port_services.get(port, "Unknown Service")
-                        save_to_file(f"Port {port} service: {service}", save_output_file)
+                        service_info = port_services.get(port, {"service": "Unknown Service", "version": "Unknown Version"})
+                        service = service_info["service"]
+                        version = service_info["version"]
+                        print_colored(f"[+] Port {port} service: {service}, version: {version}", "\033[94m")  # Blue
             else:
                 output = f"[-] No open ports found on {target_host}."
                 print_colored(output, "\033[91m")  # Red
