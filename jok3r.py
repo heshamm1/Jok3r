@@ -54,23 +54,36 @@ def discover_hosts(subnet, subnet_mask):
 def nmap_scan(target_host, all_ports=False):
     try:
         # Modified Nmap Command
-        command = f"nmap -O -sS -T4 -V -sV {'-p1-65535' if all_ports else '-p1-1024'} {target_host}"
-        process = subprocess.Popen(command, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        output, error = process.communicate()
+        temp_file_name = "nmap_output.txt
+        # Modified Nmap Command to redirect output to a temporary file
+        command = f"nmap -O -sS -T4 -V -sV {'-p1-65535' if all_ports else '-p1-1024'} {target_host} > {temp_file_name}"
+        subprocess.run(command, shell=True)
 
-        if process.returncode != 0:
-            print_colored(f"[-] Nmap scan failed: {error.decode('utf-8')}", "\033[91m")  # Red
-            return [], {}
+        # Read the content from the temporary file
+        with open(temp_file_name, "rb") as temp_file:
+            output = temp_file.read()
 
-        output_bytes = output if isinstance(output, bytes) else output.encode('utf-8')
-        
-        open_ports, port_services = parse_nmap_output(output_bytes)
+        open_ports, port_services = parse_nmap_output(output)
+
+        # Prompt user to decide whether to delete or keep the temporary file
+        print_colored("[?] Nmap scan completed. Do you want to delete the temporary file? (y/n)", "\033[94m")
+        user_input = input().lower()
+        if user_input == "n":
+            new_file_name = f"nmap_output_{target_host.replace('.', '_')}.txt"
+            # Change the temporary file name
+            os.rename(temp_file_name, new_file_name)
+            print_colored(f"[+] Results saved to {new_file_name}", "\033[92m")
+        elif user_input == "y":
+            # Delete the temporary file
+            os.remove(temp_file_name)
+            print_colored("[+] Temporary file deleted.", "\033[92m")
+        else:
+            print_colored("[-] Invalid input. Temporary file kept.", "\033[91m")
+            
         return open_ports, port_services
     except Exception as e:
         print_colored(f"[-] An error occurred during nmap scan: {e}", "\033[91m")  # Red
         return [], {}
-
-
 
 # Modified Parsing
 def parse_nmap_output(nmap_output):
