@@ -1,8 +1,21 @@
 
-<img src="https://media.giphy.com/media/mvyByQFywcRaw/giphy.gif" alt="Funny GIF" width="900" height="500">
+<img src="https://media.giphy.com/media/mvyByQFywcRaw/giphy.gif" alt="Funny GIF" width="1050" height="550">
 
+<div align="center">
+
+[![ProtonMail](https://img.shields.io/badge/ProtonMail-Email%20Me-red)](mailto:0xsh1vv@proton.me)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue)](https://www.linkedin.com/in/heshamm1/)
+[![Telegram](https://img.shields.io/badge/Telegram-Chat-blue)](https://t.me/sh1vv1)
+[![Discord](https://img.shields.io/badge/Discord-Chat-green)](https://discord.gg/SxHbbCBP)
+
+</div>
+
+<div align="center">
+  
 # **Welcome to The Joker's World!!**
-Your favorite host discovering/scanner tool.
+### Your favorite host discovery/scanner tool.
+
+</div>
 
 ## Features
 
@@ -76,7 +89,3 @@ This project is licensed under the MIT License.
 
 ## Get in Touch
 
-[![ProtonMail](https://img.shields.io/badge/ProtonMail-Email%20Me-red)](mailto:0xsh1vv@proton.me)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-Profile-blue)](https://www.linkedin.com/in/heshamm1/)
-[![Telegram](https://img.shields.io/badge/Telegram-Chat-blue)](https://t.me/sh1vv1)
-[![Discord](https://img.shields.io/badge/Discord-Chat-green)](https://discord.gg/SxHbbCBP)
