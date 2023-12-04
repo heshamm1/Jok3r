@@ -23,6 +23,7 @@ def generate_banner():
 ██   ██║██║   ██║██╔═██╗  ╚═══██╗██╔══██╗
 ╚█████╔╝╚██████╔╝██║  ██╗██████╔╝██║  ██║
  ╚════╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝ By Sh1vV..
+Support Gaza.
 """
     return random.choice(colors) + banner + "\033[0m"
 
