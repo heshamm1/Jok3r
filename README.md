@@ -57,6 +57,9 @@ python3 jok3r.py -s 192.168.1.0 -m 24
 ```bash
 python3 jok3r.py -i 192.168.1.3 -Ps -a 
 ```
+```bash
+python3 jok3r.py -f IPs.txt -Ps
+```
 ### Output Saving:
 ```bash
 python3 jok3r.py -s 192.168.1.0 -m 24 -So output.txt
