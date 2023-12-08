@@ -1,5 +1,14 @@
 <div align="center">
-  
+
+## Never Forget GAZA!
+
+![Palastine](https://media.giphy.com/media/ZQljFDYDmmLH3H7lYy/giphy.gif)
+
+> More than 17000 martyrs have been killed in Gaza since the seventh of October 2023, 80% of the martyrs are women, children and the elderly.
+The occupying entity is committing a crime against humanity So, don't forget them.
+
+---
+   
 <img src="https://media.giphy.com/media/6pjnF8qE6sqU8/giphy.gif" alt="Joker's Slap" width="900" height="540">
 
 [![ProtonMail](https://img.shields.io/badge/ProtonMail-Email%20Me-red)](mailto:0xsh1vv@proton.me)
@@ -8,7 +17,7 @@
 [![Discord](https://img.shields.io/badge/Discord-Chat-green)](https://discord.gg/SxHbbCBP)
   
 # **Welcome to The Joker's World!!**
-### Your favorite host discovery/scanner tool.
+### Your new host discovery/scanner tool.
 
 </div>
 
