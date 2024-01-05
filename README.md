@@ -70,6 +70,10 @@ python3 jok3r.py -f IPs.txt -Ps
 ```bash
 python3 jok3r.py -s 192.168.1.0 -m 24 -So output.txt
 ```
+### Subdomain Enumeration:
+```bash
+python3 jok3r.py --sub-enum
+```
 
 ## Options
 *  `-s SUBNET`:    Subnet you want to discover, e.g., 192.168.1.0
@@ -84,9 +88,6 @@ python3 jok3r.py -s 192.168.1.0 -m 24 -So output.txt
 ## Sample Usage
 ```bash
 python3 jok3r.py -s 192.168.1.0 -m 24 -i 192.168.1.2 -Ps
-```
-```bash
-python3 jok3r.py --sub-enum 
 ```
 
 ## Contributing
