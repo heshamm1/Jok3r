@@ -25,11 +25,9 @@ def generate_banner():
  ╚════╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝ By Sh1vV..
              Never Forget GAZA!
                +20000 Martyr 
-
 """
     return random.choice(colors) + banner + "\033[0m"
 
-# New function to read targets from a file
 def read_targets_from_file(file_path):
     try:
         with open(file_path, "r") as file:
@@ -38,6 +36,58 @@ def read_targets_from_file(file_path):
     except Exception as e:
         print_colored(f"[-] An error occurred while reading targets from file: {e}", "\033[91m")
         return []
+
+def subdomain_enumeration_script():
+    import subprocess
+
+    def main():
+        while True:
+            print("[!] Give me the Target Domain : ")
+            domain = input()
+            print("[+] Target Domain is", domain)
+
+            print("[!] Give me the output file: ")
+            output_file = input()
+            print("[+] Output file is", output_file)
+
+            print("[!] Are you sure about the entered data ?  Y/n")
+            confirmation = input()
+
+            if confirmation.lower() == "y":
+                print("[+] Starting enumeration...")
+
+                # Run subfinder
+                print("[+] Running subfinder...")
+                subprocess.run(["sudo", "subfinder", "-d", domain, "-all", "-silent"], stdout=open(output_file, "a"))
+                print("[+] subfinder DONE!")
+
+                # Run assetfinder
+                print("[+] Running assetfinder...")
+                subprocess.run(["sudo", "assetfinder", domain, "-subs-only"], stdout=open(output_file, "a"))
+                print("[+] assetfinder DONE!")
+
+                # Run findomain
+                print("[+] Running findomain...")
+                subprocess.run(["sudo", "findomain", "-t", domain, "-q"], stdout=open(output_file, "a"))
+                print("[+] findomain DONE!")
+
+                # Sort and remove duplicates
+                print("[+] Sorting and removing duplicates...")
+                with open(output_file, "r") as infile, open("subdomains.txt", "a") as outfile:
+                    outfile.writelines(sorted(set(infile.readlines())))
+                print("[+] Process completed! Subdomains saved in subdomains.txt")
+
+                break
+            elif confirmation.lower() == "n":
+                print("[!] Starting the process again...")
+            else:
+                print("Invalid input. Please enter Y or N.")
+
+    if __name__ == "__main__":
+        try:
+            main()
+        except KeyboardInterrupt:
+            print("\n[;)] Goodbye, hacker!")
 
 def discover_hosts(targets):
     discovered_hosts = []
@@ -63,6 +113,7 @@ def discover_hosts(targets):
         thread.join()
 
     return discovered_hosts
+
 
 def nmap_scan(target_host, all_ports=False):
     try:
@@ -129,10 +180,12 @@ def display_help():
     print("  -So FILE     Save output to a text file")
     print("  -Ps          Perform port scan")
     print("  -a           Scan all 65535 ports")
+    print("  --sub-enum   Perform subdomain enumeration")
     print("  -h           Show help message")
     print("\nExample:")
     print("     python3 jok3r.py -s 192.168.1.0 -m 24 -i 192.168.1.2 -Ps")
     print("     python3 jok3r.py -f IPs.txt -Ps")
+    print("     python3 jok3r.py --sub-enum")
     print("")
     sys.exit()
 
@@ -152,10 +205,15 @@ def main():
         if len(sys.argv) < 2:
             display_help()
 
+        # Check if --sub-enum is provided without additional arguments
+        if sys.argv[1] == "--sub-enum" and len(sys.argv) == 2:
+            subdomain_enumeration_script()
+            sys.exit()
+
         subnet = None
         subnet_mask = None
         target_host = None
-        target_hosts = None  # New variable for the list of targets
+        target_hosts = None
         save_output_file = None
         perform_port_scan = False
         scan_all_ports = False
