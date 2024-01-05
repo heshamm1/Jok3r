@@ -24,7 +24,7 @@ def generate_banner():
 ╚█████╔╝╚██████╔╝██║  ██╗██████╔╝██║  ██║
  ╚════╝  ╚═════╝ ╚═╝  ╚═╝╚═════╝ ╚═╝  ╚═╝ By Sh1vV..
              Never Forget GAZA!
-               +17000 Martyr 
+               +20000 Martyr 
 
 """
     return random.choice(colors) + banner + "\033[0m"
