@@ -17,7 +17,7 @@ The occupying entity is committing a crime against humanity So, don't forget the
 [![Discord](https://img.shields.io/badge/Discord-Chat-green)](https://discord.gg/SxHbbCBP)
   
 # **Welcome to The Joker's World!!**
-### Your new host discovery/scanner tool.
+### Your new host discovery/scanner/enumeration tool.
 
 </div>
 
@@ -26,6 +26,7 @@ The occupying entity is committing a crime against humanity So, don't forget the
 - **Host Discovery:** Quickly discover hosts in a specified subnet.
 - **Port Scanning:** Perform stealth or aggressive port scans on specified hosts.
 - **Technology Detection:** Identify technologies running on open ports.
+- **Subdomain Enumeration:** Identify all subdomains according to Subfinder, assetfinder, findomain tools.
 - **Output Saving:** Save scan results and discovered hosts to a text file.
 
 ## Table of Contents
@@ -43,11 +44,7 @@ Ensure you have Python 3.x installed. Use `pip` to install the required dependen
 
 ```bash
 git clone https://github.com/heshamm1/Jok3r && cd Jok3r
-```
-```bash
-pip install -r requirements.txt
-```
-> or 
+``` 
 ```bash
 chmod +x setup.sh && ./setup.sh
 ```
@@ -82,10 +79,14 @@ python3 jok3r.py -s 192.168.1.0 -m 24 -So output.txt
 *  `-Ps`:          Perform port scan
 *  `-a`:           Scan all 65535 ports
 *  `-h`:           Show help message
+*  `--sub-enum`:   Perform Subdomain Enumeration
 
 ## Sample Usage
 ```bash
 python3 jok3r.py -s 192.168.1.0 -m 24 -i 192.168.1.2 -Ps
+```
+```bash
+python3 jok3r.py --sub-enum 
 ```
 
 ## Contributing
