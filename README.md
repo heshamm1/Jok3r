@@ -4,7 +4,7 @@
 
 ![Palastine](https://media.giphy.com/media/ZQljFDYDmmLH3H7lYy/giphy.gif)
 
-> More than 30000 martyrs have been killed in Gaza since the seventh of October 2023, 80% of the martyrs are women, children and the elderly.
+> More than 50000 martyrs have been killed in Gaza since the seventh of October 2023, 80% of the martyrs are women, children and the elderly.
 The occupying entity is committing a crime against humanity So, don't forget them.
 
 ---
